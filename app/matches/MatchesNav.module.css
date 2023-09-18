@@ -1,0 +1,23 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    padding: 2em;
+    margin: 0 auto;
+    width: 100%;
+    justify-content: center;
+}
+
+.wrapper button {
+    all: unset;
+    cursor: pointer;    
+    font-size: 2em;
+}
+
+.wrapper span {
+    font-size: 1.2em;
+}
+
+.wrapper button.disabled {
+    cursor: not-allowed;
+}

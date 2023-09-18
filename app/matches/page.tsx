@@ -5,10 +5,23 @@ import Image from "next/image";
 import { getPlaceholderImage, passTimeString } from "@/utils/common";
 import Team from "@/components/team";
 import { env } from "process";
+import MatchesNav from "./matches-nav";
 
-export default async function MatchesPage() {
+export default async function MatchesPage({
+  searchParams,
+}: {
+  searchParams: { page?: string };
+}) {
+  const page = searchParams.page;
+  let searchOffset = 0;
+  if (page) {
+    searchOffset = parseInt(page) * 25;
+  }
+  console.log(
+    `https://open.faceit.com/data/v4/hubs/f21f2c66-d0c6-4d58-8146-3681ba8bd94a/matches?type=past&offset=${searchOffset}&limit=25`,
+  );
   const matches = await fetch(
-    "https://open.faceit.com/data/v4/hubs/f21f2c66-d0c6-4d58-8146-3681ba8bd94a/matches?type=past&offset=0&limit=25",
+    `https://open.faceit.com/data/v4/hubs/f21f2c66-d0c6-4d58-8146-3681ba8bd94a/matches?type=past&offset=${searchOffset}&limit=25`,
     {
       headers: {
         Accept: "application/json",
@@ -59,10 +72,7 @@ export default async function MatchesPage() {
         </ul>
       </div>
 
-      <div>
-        <button>Previous</button>
-        <button>Next</button>
-      </div>
+      <MatchesNav isEnd={matches.items.length != 25} />
     </main>
   );
 }
