@@ -1146,5 +1146,21 @@
       {
         "id": 603,
         "name": "swift_blink"
+      },
+      {
+        "id": 473,
+        "name": "voodoo_mask"
+      },
+      {
+        "id": 604,
+        "name": "arcane_blink"
+      },
+      {
+        "id": 256,
+        "name": "aeon_disk"
+      },
+      {
+        "id": 911,
+        "name": "revenants_brooch"  
       }
 ]
