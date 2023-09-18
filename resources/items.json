@@ -1134,5 +1134,17 @@
       {
         "id": 225,
         "name": "nullifier"
+      }, 
+      {
+        "id": 269,
+        "name": "holy_locket"
+      },
+      {
+        "id": 598,
+        "name": "mage_slayer"
+      },
+      {
+        "id": 603,
+        "name": "swift_blink"
       }
 ]
