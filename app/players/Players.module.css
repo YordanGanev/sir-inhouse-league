@@ -1,0 +1,21 @@
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 1em .5em;
+    text-align: center;
+    /* border-bottom: 1px solid #ddd; */
+}
+
+.table td img {
+    border-radius: 50%;
+}
+
+.player {
+  display: flex;
+  gap: .5em;
+  /* justify-content: center; */
+  align-items: center;
+}
