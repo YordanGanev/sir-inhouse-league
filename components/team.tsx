@@ -2,6 +2,7 @@ import { getPlaceholderImage } from "@/utils/common";
 import Image from "next/image";
 
 import Style from "./styles/Team.module.css";
+import PlayerImage from "./PlayerImage";
 
 export default function Team({
   team,
@@ -24,8 +25,8 @@ export default function Team({
             key={player.player_id}
             className={team.leader === player.player_id ? Style.leader : ""}
           >
-            <Image
-              alt={player.nickname}
+            <PlayerImage
+              alt={player.nickname.slice(0, 2).toLowerCase()}
               src={
                 player.avatar !== ""
                   ? player.avatar
@@ -33,8 +34,6 @@ export default function Team({
                       player.nickname.slice(0, 2).toLowerCase(),
                     )
               }
-              width={64}
-              height={64}
             />
           </div>
         );

@@ -20,4 +20,5 @@
 
 .wrapper button.disabled {
     cursor: not-allowed;
+    color: var(--themeLight);
 }
