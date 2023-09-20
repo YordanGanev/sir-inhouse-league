@@ -14,7 +14,7 @@ export default function HeadBar({ user }: { user?: any }) {
 
         <ul className={Style.loginGroup}>
           <li>
-            <Link href="/">Stats</Link>
+            <Link href="/stats">Stats</Link>
           </li>
           <li>
             <Link href="/matches">Matches</Link>

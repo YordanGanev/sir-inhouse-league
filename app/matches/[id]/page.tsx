@@ -2,15 +2,10 @@ import DotaTeam from "@/components/dota-team";
 import { env } from "process";
 import React from "react";
 
-import DotaHeroes from "@/resources/heroes.json";
-import DotaItems from "@/resources/items.json";
-
 import Image from "next/image";
 
 import Style from "./Match.module.css";
 import NotFount from "@/styles/not-found.module.css";
-
-import { Player_t } from "@/utils/types";
 
 export default async function MatchPage({
   params,
@@ -26,15 +21,6 @@ export default async function MatchPage({
       },
     },
   ).then((res) => res.json());
-
-  const itemLabels = [
-    "Item 1",
-    "Item 2",
-    "Item 3",
-    "Item 4",
-    "Item 5",
-    "Item 6",
-  ] as const;
 
   if (match.errors) {
     return (

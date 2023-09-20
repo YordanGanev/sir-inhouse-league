@@ -1,0 +1,22 @@
+.nav {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.nav a {
+    padding: .25em 1em;
+    background-color: #a59678;
+    border-radius: 2em;
+    color: var(--light);
+    max-width: fit-content;
+}
+
+.nav a:hover {
+    filter: brightness(.7);
+}
+
+.info h3  {
+    padding: 2em 0 1em;
+}

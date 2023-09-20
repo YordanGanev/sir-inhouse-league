@@ -7,6 +7,13 @@ import Team from "@/components/team";
 import { env } from "process";
 import MatchesNav from "./matches-nav";
 
+export const revalidate = 3600;
+
+export const metadata = {
+  title: "Matches",
+  description: "Matches history",
+};
+
 export default async function MatchesPage({
   searchParams,
 }: {
@@ -17,9 +24,6 @@ export default async function MatchesPage({
   if (page) {
     searchOffset = parseInt(page) * 25;
   }
-  console.log(
-    `https://open.faceit.com/data/v4/hubs/f21f2c66-d0c6-4d58-8146-3681ba8bd94a/matches?type=past&offset=${searchOffset}&limit=25`,
-  );
   const matches = await fetch(
     `https://open.faceit.com/data/v4/hubs/f21f2c66-d0c6-4d58-8146-3681ba8bd94a/matches?type=past&offset=${searchOffset}&limit=25`,
     {
@@ -27,7 +31,7 @@ export default async function MatchesPage({
         Accept: "application/json",
         Authorization: `Bearer ${env.FACEIT_TOKEN}`,
       },
-      next: { revalidate: 1800 },
+      next: { revalidate: 3600 },
     },
   ).then((res) => res.json());
 

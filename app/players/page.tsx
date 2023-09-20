@@ -8,6 +8,12 @@ import { env } from "process";
 
 export const revalidate = 3600;
 
+
+export const metadata = {
+  title: "Players",
+  description: "Players",
+};
+
 interface User {
   current_streak: number;
   draw: number;
