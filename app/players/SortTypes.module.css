@@ -1,14 +1,14 @@
 .wrapper button {
-    all: unset;
-    cursor: pointer;
+  all: unset;
+  cursor: pointer;
 }
 
 .wrapper button:hover,
 .wrapper button:focus {
-    filter: brightness(.7);
+  filter: brightness(0.7);
 }
 
 .sort {
-    font-weight: 900;
-    text-decoration: underline;
+  font-weight: 900;
+  text-decoration: underline;
 }

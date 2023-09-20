@@ -1,64 +1,61 @@
 .table {
-    width: 100%;
-    margin: 0 auto;
-    border-collapse: collapse;
+  width: 100%;
+  margin: 0 auto;
+  border-collapse: collapse;
 }
 
 .table th,
 .table td {
-    text-align: center;
-    padding: .4em;
+  text-align: center;
+  padding: 0.4em;
 }
 .table th {
-
-    padding: .5em;
-    text-align: center;
-    text-transform: capitalize;
+  padding: 0.5em;
+  text-align: center;
+  text-transform: capitalize;
 }
 
 .table .hero {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 1em;
-    text-align: left;
-    height: 100%;
-    border: none;
-    border-bottom: 1px solid var(--themeLighter);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1em;
+  text-align: left;
+  height: 100%;
+  border: none;
+  border-bottom: 1px solid var(--themeLighter);
 }
 
 .table th {
-    border: 3px solid var(--themeLight);
+  border: 3px solid var(--themeLight);
 }
 
 .table th button {
-    all: unset;
-    cursor: pointer;
+  all: unset;
+  cursor: pointer;
 }
 
 .table tr > td {
-    border: 1px solid var(--themeLighter);
+  border: 1px solid var(--themeLighter);
 }
 
 @media screen and (max-width: 768px) {
+  .table .hero {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.2em;
+    border-left: 1px solid var(--themeLighter);
+  }
 
-    .table .hero {
-        flex-direction: column;
-        text-align: center;
-        gap: .2em;
-        border-left: 1px solid var(--themeLighter);
-    }
-
-    .table > thead > tr:first-child,
-    .table > thead > tr > th:nth-child(n+7),
-    .table > thead > tr > th:first-child,
-    .table > tbody > tr > td:first-child,
-    .table tbody > tr > td:nth-child(n+7) {
-        display: none;
-    }
-    
+  .table > thead > tr:first-child,
+  .table > thead > tr > th:nth-child(n + 7),
+  .table > thead > tr > th:first-child,
+  .table > tbody > tr > td:first-child,
+  .table tbody > tr > td:nth-child(n + 7) {
+    display: none;
+  }
 }
 
 .info {
-    padding-top: 1em;
+  padding-top: 1em;
 }

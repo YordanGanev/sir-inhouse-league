@@ -1,21 +1,22 @@
 .table {
-    width: 100%;
-    border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.table th, .table td {
-    padding: .5em;
-    text-align: center;
-    border: 1px solid var(--neutralPrimary);
+.table th,
+.table td {
+  padding: 0.5em;
+  text-align: center;
+  border: 1px solid var(--neutralPrimary);
 }
 
 .table td img {
-    border-radius: 50%;
+  border-radius: 50%;
 }
 
 .player {
   display: flex;
-  gap: .5em;
+  gap: 0.5em;
   align-items: center;
   border: none;
   border-bottom: 1px solid var(--neutralPrimary);

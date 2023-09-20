@@ -1,70 +1,67 @@
 .container {
-    display:flex;
-    gap: 1em;
-    width: fit-content;
+  display: flex;
+  gap: 1em;
+  width: fit-content;
 }
 
 .container img {
-    border-radius: 50%;
+  border-radius: 50%;
 }
 
 .leader {
-    position: relative;
+  position: relative;
 }
 
 .leader::after {
-    content: "C";
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    height: 1.2em;
-    width: 1.2em;
-    border-radius: 50%;
-    background-color: gold;
-    color: black;
-    font-style: bold;
-    text-align: center;
-} 
-
+  content: "C";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 1.2em;
+  width: 1.2em;
+  border-radius: 50%;
+  background-color: gold;
+  color: black;
+  font-style: bold;
+  text-align: center;
+}
 
 .win {
-    border-color: var(--successColor);
+  border-color: var(--successColor);
 }
 
 .lose {
-    border-color: var(--errorColor);
+  border-color: var(--errorColor);
 }
 
+@media screen and (min-width: 576px) {
+  .first {
+    border-right-width: 0.5em;
+    border-right-style: solid;
+    border-radius: 0.5em;
+    padding-right: 0.5em;
+  }
 
-@media screen and (min-width: 576px){
-    .first {
-        border-right-width: .5em;
-        border-right-style: solid;
-        border-radius: .5em;
-        padding-right: .5em;
-    }
-    
-    .second {
-        border-left-width: .5em;
-        border-left-style: solid;
-        border-radius: .5em;
-        padding-left    : .5em;
-    }
+  .second {
+    border-left-width: 0.5em;
+    border-left-style: solid;
+    border-radius: 0.5em;
+    padding-left: 0.5em;
+  }
 }
 
-@media screen and (max-width: 576px){
-    .first {
-        border-bottom-width: .5em;
-        border-bottom-style: solid;
-        border-radius: .5em;
-        padding-bottom: .5em;
-    }
-    
-    .second {
-        border-top-width: .5em;
-        border-top-style: solid;
-        border-radius: .5em;
-        padding-top    : .5em;
-    }
+@media screen and (max-width: 576px) {
+  .first {
+    border-bottom-width: 0.5em;
+    border-bottom-style: solid;
+    border-radius: 0.5em;
+    padding-bottom: 0.5em;
+  }
 
+  .second {
+    border-top-width: 0.5em;
+    border-top-style: solid;
+    border-radius: 0.5em;
+    padding-top: 0.5em;
+  }
 }

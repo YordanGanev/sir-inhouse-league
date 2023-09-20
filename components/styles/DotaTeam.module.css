@@ -1,44 +1,44 @@
 .hero > div {
-    position: relative;
-    max-width: 64px;
-    max-height: 36px;
+  position: relative;
+  max-width: 64px;
+  max-height: 36px;
 }
 
 .hero span {
-    font-size: smaller;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    padding: 3px;
-    background-color: hsla(0, 0%, 20%, 0.5);
+  font-size: smaller;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 3px;
+  background-color: hsla(0, 0%, 20%, 0.5);
 }
 
 .items {
-    width: fit-content;
-    display: flex;
-    gap: .2em;
+  width: fit-content;
+  display: flex;
+  gap: 0.2em;
 }
 
 .table {
-    width: 100%;
-    text-align: center;
+  width: 100%;
+  text-align: center;
 }
 
 .table th,
 .table td {
-    padding: .5em;
-    border: none;
+  padding: 0.5em;
+  border: none;
 }
 
 .player {
-    width: 100%;
+  width: 100%;
 }
 
 .team {
-    font-size: xx-large;
-    font-weight: bold;
+  font-size: xx-large;
+  font-weight: bold;
 }
 
 .team span {
-    color: var(--successColor);
+  color: var(--successColor);
 }

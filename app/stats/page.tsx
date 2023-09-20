@@ -22,7 +22,6 @@ export const revalidate = 3600;
 
 async function getData() {
   const matches = [];
-  const matchesData: any[] = [];
 
   let offset = 0;
   while (true) {

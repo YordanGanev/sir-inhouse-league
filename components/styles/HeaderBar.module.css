@@ -1,81 +1,78 @@
 .header {
-    background-color: var(--themeDarkAlt);
-    padding: var(--headerYPaddings) 1em;
-    width: 100vw;
-    position: sticky;
-    top: 0;
-    box-shadow: 0px 0px 3px 1px var(--neutralPrimaryAlt);
+  background-color: var(--themeDarkAlt);
+  padding: var(--headerYPaddings) 1em;
+  width: 100vw;
+  position: sticky;
+  top: 0;
+  box-shadow: 0px 0px 3px 1px var(--neutralPrimaryAlt);
 }
 
 .wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-    max-width: 1200px;
-    min-width: calc(var(--profilePicWidth) + var(--iconWidth) + 20px);
-    min-height: var(--headerHeight);
-    max-height: var(--headerHeight);
-    
-    margin: 0 auto;
-    padding: .5em;
+  max-width: 1200px;
+  min-width: calc(var(--profilePicWidth) + var(--iconWidth) + 20px);
+  min-height: var(--headerHeight);
+  max-height: var(--headerHeight);
+
+  margin: 0 auto;
+  padding: 0.5em;
 }
-
 
 /* << */
 
 .icon {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
-.icon>a>img {
-    width: var(--iconWidth);
-    display: flex;
+.icon > a > img {
+  width: var(--iconWidth);
+  display: flex;
 }
 
 /* Profile picture */
 
 .user {
-    display: flex;
-    align-items: center;
-    gap: 1em;
+  display: flex;
+  align-items: center;
+  gap: 1em;
 }
 
 .userImage {
-    align-items: center;
-    height: var(--profilePicWidth);
-    width: var(--profilePicWidth);
-    position: relative;
-    cursor: pointer;
-    display: inline;
+  align-items: center;
+  height: var(--profilePicWidth);
+  width: var(--profilePicWidth);
+  position: relative;
+  cursor: pointer;
+  display: inline;
 }
 
 .wrapper a:hover,
 .wrapper a:focus {
-    filter: brightness(.7);
+  filter: brightness(0.7);
 }
 
-.userImage>img {
-    height: var(--profilePicWidth);
-    width: var(--profilePicWidth);
-    border-radius: 50%;
-    border: 1px solid var(--themeDarkAlt);
+.userImage > img {
+  height: var(--profilePicWidth);
+  width: var(--profilePicWidth);
+  border-radius: 50%;
+  border: 1px solid var(--themeDarkAlt);
 }
-
 
 /* Profile */
 
-
 .loginGroup {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 1em;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1em;
 }
 
 .sign {
-    padding: 0.5em;
-    border-radius: 5em;
-    border: 1px solid var(--white);
+  padding: 0.5em;
+  border-radius: 5em;
+  border: 1px solid var(--white);
 }

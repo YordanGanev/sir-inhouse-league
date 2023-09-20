@@ -1,0 +1,13 @@
+.wrapper {
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.info {
+    text-align: center;
+    padding: .5em;
+}

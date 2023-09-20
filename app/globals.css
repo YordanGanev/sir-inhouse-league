@@ -44,7 +44,7 @@
   --errorColor: #eb505a;
   --dangerColor: #46110e;
   --warningColor: #f5b700;
-  --successColor: #4CAF50;
+  --successColor: #4caf50;
   /* Activity in scheldue colors */
   --activityFontColor: var(--extraWhite);
   --activityTraining: var(--extraSecondary);
@@ -73,17 +73,16 @@ body {
 body,
 main {
   background-color: var(--black);
-  color: var(--white)
+  color: var(--white);
 }
 
 a {
   text-decoration: none;
-  color: var(--white)
+  color: var(--white);
 }
-
 
 .content-wrapper {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: .75rem;
+  padding: 0.75rem;
 }
