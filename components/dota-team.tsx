@@ -105,7 +105,7 @@ function ItemImage({ name }: { name: string }) {
     <Image
       width={48}
       height={35}
-      alt="-"
+      alt=""
       src={`https://api.opendota.com/apps/dota2/images/dota_react/items/${name}.png`}
     />
   );

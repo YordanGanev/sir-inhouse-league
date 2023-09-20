@@ -49,7 +49,7 @@ export default function SortStats({
               {label}{" "}
               {sort === label &&
                 type === sortType &&
-                (order === "asc" ? (
+                (order === "desc" ? (
                   <FontAwesomeIcon icon={faSortUp} />
                 ) : (
                   <FontAwesomeIcon icon={faSortDown} />
