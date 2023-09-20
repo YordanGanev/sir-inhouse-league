@@ -4,9 +4,9 @@
 }
 
 .table th, .table td {
-    padding: 1em .5em;
+    padding: .5em;
     text-align: center;
-    /* border-bottom: 1px solid #ddd; */
+    border: 1px solid var(--neutralPrimary);
 }
 
 .table td img {
@@ -16,6 +16,7 @@
 .player {
   display: flex;
   gap: .5em;
-  /* justify-content: center; */
   align-items: center;
+  border: none;
+  border-bottom: 1px solid var(--neutralPrimary);
 }
