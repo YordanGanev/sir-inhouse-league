@@ -53,6 +53,10 @@
     flex-direction: row;
   }
 
+  .table thead tr {
+    display: none;
+  }
+
   .table > tbody > tr > td:first-child,
   .table > tbody > tr > td:nth-child(n + 10) {
     display: none;
