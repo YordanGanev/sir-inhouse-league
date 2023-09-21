@@ -219,7 +219,7 @@ export default async function PlayersPage({
             return (
               <tr key={player.player_id}>
                 <td>{index + 1}</td>
-                <td className={Style.player}>
+                <td datatype={`# ${index + 1}`} className={Style.player}>
                   <Image
                     alt={player.nickname}
                     src={
@@ -235,14 +235,14 @@ export default async function PlayersPage({
                   />
                   <div>{player.nickname}</div>
                 </td>
-                <td>{player.points}</td>
-                <td>{player.current_streak}</td>
-                <td>{player.stats.Matches}</td>
-                <td>{player.won}</td>
-                <td>{player.stats["Win Rate %"]}</td>
-                <td>{player.stats["Average Gold/minute"]}</td>
-                <td>{player.stats["Average XP/minute"]}</td>
-                <td>
+                <td datatype="points">{player.points}</td>
+                <td datatype="streak">{player.current_streak}</td>
+                <td datatype="matches">{player.stats.Matches}</td>
+                <td datatype="won">{player.won}</td>
+                <td datatype="win rate %">{player.stats["Win Rate %"]}</td>
+                <td datatype="GPM">{player.stats["Average Gold/minute"]}</td>
+                <td datatype="XPM">{player.stats["Average XP/minute"]}</td>
+                <td datatype="KDA">
                   {(
                     (Number(player.stats.Kills) +
                       Number(player.stats.Assists)) /

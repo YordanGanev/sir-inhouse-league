@@ -24,6 +24,9 @@
   --white: #f0f0f0;
   /* More */
   --neutralTertiaryAlt: #f7f7fd;
+
+  --tableMain: hsl(0, 0%, 8%);
+  --tableExtra: hsl(0, 0%, 8%, .8);;
   /* --neutralDark: #605e5d; */
   --neutralQuaternaryAlt: #f5f5fd;
   --neutralLight: #f4f4fd;

@@ -23,7 +23,6 @@
   text-align: left;
   height: 100%;
   border: none;
-  border-bottom: 1px solid var(--themeLighter);
 }
 
 .table th {
@@ -35,8 +34,12 @@
   cursor: pointer;
 }
 
-.table tr > td {
-  border: 1px solid var(--themeLighter);
+.table tbody tr {
+  background-color: var(--tableMain);
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: var(--tableExtra);
 }
 
 @media screen and (max-width: 768px) {
@@ -44,7 +47,6 @@
     flex-direction: column;
     text-align: center;
     gap: 0.2em;
-    border-left: 1px solid var(--themeLighter);
   }
 
   .table > thead > tr:first-child,

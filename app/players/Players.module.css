@@ -7,7 +7,16 @@
 .table td {
   padding: 0.5em;
   text-align: center;
-  border: 1px solid var(--neutralPrimary);
+}
+
+.table thead tr {
+  background-color: var(--black);
+}
+.table tr {
+  background-color: var(--tableMain);
+}
+.table tr:nth-child(even) {
+  background-color: var(--tableExtra);
 }
 
 .table td img {
@@ -19,5 +28,33 @@
   gap: 0.5em;
   align-items: center;
   border: none;
-  border-bottom: 1px solid var(--neutralPrimary);
+}
+
+@media screen and (max-width: 768px) {
+  .table td {
+    display: grid;
+    text-align: left;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .table td:before {
+    content: attr(datatype) ": ";
+    display: inline-block;
+    padding-right: 1em;
+    text-transform: capitalize;
+    font-weight: 700;
+  }
+  
+  .table .player {
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+    border: none;
+    flex-direction: row;
+  }
+
+  .table > tbody > tr > td:first-child,
+  .table > tbody > tr > td:nth-child(n + 10) {
+    display: none;
+  }
 }

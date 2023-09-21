@@ -259,8 +259,8 @@ export default async function StatsPage({
 
             return (
               <tr key={hero.id}>
-                <td>{index + 1}</td>
-                <td className={Style.hero}>
+                <td datatype={"#"}>{index + 1}</td>
+                <td datatype={"hero"} className={Style.hero}>
                   <Image
                     src={`https://api.opendota.com/apps/dota2/images/dota_react/heroes/${currentHero.name.slice(
                       14,
@@ -271,14 +271,18 @@ export default async function StatsPage({
                   />
                   <span>{currentHero.localized_name}</span>
                 </td>
-                <td>
+                <td datatype={"total picked"}>
                   {hero.radiant.wins +
                     hero.radiant.loses +
                     hero.dire.wins +
                     hero.dire.loses}
                 </td>
-                <td>{hero.radiant.wins + hero.dire.wins}</td>
-                <td>{hero.radiant.loses + hero.dire.loses}</td>
+                <td datatype={"total wins"}>
+                  {hero.radiant.wins + hero.dire.wins}
+                </td>
+                <td datatype={"total loses"}>
+                  {hero.radiant.loses + hero.dire.loses}
+                </td>
                 <td>
                   {`${getWinRate(
                     hero.radiant.wins + hero.dire.wins,
