@@ -1,6 +1,6 @@
 "use client";
 
-import { getPlaceholderImage } from "@/utils/common";
+import { getPlaceholderImage } from "@/lib/common";
 import Image from "next/image";
 import { useState } from "react";
 

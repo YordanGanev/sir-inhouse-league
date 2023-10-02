@@ -42,3 +42,11 @@
 .team span {
   color: var(--successColor);
 }
+
+@media screen and (max-width: 768px) {
+  .table td {
+    display: grid;
+    text-align: left;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

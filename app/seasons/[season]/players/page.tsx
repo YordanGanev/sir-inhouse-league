@@ -1,12 +1,10 @@
-import { getPlaceholderImage } from "@/utils/common";
+import { SeasonsHistory, getPlaceholderImage, getWinRate } from "@/lib/common";
 import Image from "next/image";
 import React from "react";
 
 import Style from "./Players.module.css";
 import SortTypes from "./SortTypes";
 import { env } from "process";
-
-export const revalidate = 3600;
 
 export const metadata = {
   title: "Players",
@@ -68,14 +66,18 @@ interface PlayerStats {
   };
 }
 
-async function getPlayers() {
+export async function generateStaticParams() {
+  return SeasonsHistory;
+}
+
+async function getPlayers(season: string) {
   let fetchId = 0;
   const players = [];
   const stats = [];
 
   while (true) {
     const current = await fetch(
-      `https://open.faceit.com/data/v4/leaderboards/hubs/f21f2c66-d0c6-4d58-8146-3681ba8bd94a/seasons/1?offset=${
+      `https://open.faceit.com/data/v4/leaderboards/hubs/f21f2c66-d0c6-4d58-8146-3681ba8bd94a/seasons/${season}?offset=${
         50 * fetchId
       }&limit=50`,
       {
@@ -84,7 +86,7 @@ async function getPlayers() {
           Authorization: `Bearer ${env.FACEIT_TOKEN}`,
         },
         next: {
-          revalidate: 3600,
+          revalidate: 1800,
         },
       },
     ).then((res) => res.json());
@@ -110,7 +112,7 @@ async function getPlayers() {
           Authorization: `Bearer ${env.FACEIT_TOKEN}`,
         },
         next: {
-          revalidate: 3600,
+          revalidate: 1800,
         },
       },
     )
@@ -149,13 +151,26 @@ async function getPlayers() {
 }
 
 export default async function PlayersPage({
+  params,
   searchParams,
 }: {
+  params: { season: string };
   searchParams: { sort?: string; order?: "asc" | "desc" };
 }) {
   const { sort, order } = searchParams;
 
-  const players = await getPlayers();
+  const season = await fetch(
+    `https://open.faceit.com/data/v4/leaderboards/hubs/f21f2c66-d0c6-4d58-8146-3681ba8bd94a/seasons/${params.season}`,
+    {
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${env.FACEIT_TOKEN}`,
+      },
+      cache: "force-cache",
+    },
+  ).then((res) => res.json());
+
+  const players = await getPlayers(params.season);
   players.sort((a, b) => {
     switch (sort) {
       case "Streak":
@@ -210,6 +225,13 @@ export default async function PlayersPage({
 
   return (
     <main className={`content-wrapper `}>
+      <div>
+        <h2 className="text-xl">{season.leaderboard.leaderboard_name}</h2>
+        <p className="text-gray-50/70">
+          Leaderboards for season {season.leaderboard.season}
+        </p>
+        <p className="text-gray-50/70">Ingame stats for all time</p>
+      </div>
       <table className={Style.table}>
         <thead>
           <SortTypes />
@@ -237,9 +259,11 @@ export default async function PlayersPage({
                 </td>
                 <td datatype="points">{player.points}</td>
                 <td datatype="streak">{player.current_streak}</td>
-                <td datatype="matches">{player.stats.Matches}</td>
+                <td datatype="matches">{player.played}</td>
                 <td datatype="won">{player.won}</td>
-                <td datatype="win rate %">{player.stats["Win Rate %"]}</td>
+                <td datatype="win rate">
+                  {getWinRate(player.won, player.lost)}
+                </td>
                 <td datatype="GPM">{player.stats["Average Gold/minute"]}</td>
                 <td datatype="XPM">{player.stats["Average XP/minute"]}</td>
                 <td datatype="KDA">

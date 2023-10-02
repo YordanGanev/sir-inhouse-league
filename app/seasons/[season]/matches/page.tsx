@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import Style from "./Matches.module.css";
 import Image from "next/image";
-import { getPlaceholderImage, passTimeString } from "@/utils/common";
+import { getPlaceholderImage, passTimeString } from "@/lib/common";
 import Team from "@/components/team";
 import { env } from "process";
 import MatchesNav from "./matches-nav";
@@ -31,7 +31,7 @@ export default async function MatchesPage({
         Accept: "application/json",
         Authorization: `Bearer ${env.FACEIT_TOKEN}`,
       },
-      next: { revalidate: 3600 },
+      next: { revalidate: 1800 },
     },
   ).then((res) => res.json());
 

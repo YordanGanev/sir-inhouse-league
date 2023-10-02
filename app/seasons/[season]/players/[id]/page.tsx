@@ -9,7 +9,7 @@ export default async function PlayerPage({
 }) {
   return (
     <>
-      <Profile picture="a" subtitle="a" title="b" description="?" />
+      {/* <Profile picture="a" subtitle="a" title="b" description="?" /> */}
       TBD..
     </>
   );

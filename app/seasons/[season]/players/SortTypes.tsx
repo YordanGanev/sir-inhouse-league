@@ -1,7 +1,7 @@
 "use client";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import Style from "./SortTypes.module.css";
-import { playerSortLables } from "@/utils/common";
+import { playerSortLables } from "@/lib/common";
 
 export default function SortTypes() {
   const searchParams = useSearchParams();

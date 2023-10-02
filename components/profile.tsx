@@ -26,7 +26,7 @@ export default function Profile({
         />
       </div>
       <div className={Style.content}>
-        <h2>{title}</h2>
+        <h2 className="font-bold text-2xl">{title}</h2>
         <p className={Style.subtitle}>{subtitle}</p>
         {description && (
           <div

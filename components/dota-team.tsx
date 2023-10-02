@@ -4,7 +4,7 @@ import DotaItems from "@/resources/items.json";
 import Image from "next/image";
 
 import Style from "./styles/DotaTeam.module.css";
-import { Player_t } from "@/utils/types";
+import { Player_t } from "@/lib/types";
 
 export default function DotaTeam({ team }: { team: any }) {
   const itemLabels = [

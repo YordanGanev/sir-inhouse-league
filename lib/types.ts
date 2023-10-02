@@ -25,3 +25,12 @@ export type Player_t = {
     Hero: number;
   };
 };
+
+export type NavItem_t = "stats" | "matches" | "players";
+
+export type HeroStats_t = {
+  id: number;
+  name?: string;
+  dire: { wins: number; loses: number };
+  radiant: { wins: number; loses: number };
+};

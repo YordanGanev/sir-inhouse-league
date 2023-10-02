@@ -1,4 +1,4 @@
-import { getPlaceholderImage } from "@/utils/common";
+import { getPlaceholderImage } from "@/lib/common";
 import Image from "next/image";
 
 import Style from "./styles/Team.module.css";

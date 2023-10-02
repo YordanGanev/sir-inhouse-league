@@ -1,7 +1,6 @@
 .header {
   background-color: var(--themeDarkAlt);
   padding: var(--headerYPaddings) 1em;
-  min-width: 100vw;
   width: 100%;
   position: sticky;
   top: 0;
@@ -30,7 +29,7 @@
   align-items: center;
 }
 
-.icon > a > img {
+.icon > a > div > img {
   width: var(--iconWidth);
   display: flex;
 }
@@ -77,4 +76,24 @@
   padding: 0.5em;
   border-radius: 5em;
   border: 1px solid var(--white);
+}
+
+
+@media screen and (max-width: 576px) {
+    .icon > a > div > img{
+        display:none;
+    }
+
+    .icon > a > div:after{
+        content:"Home";
+    }
+
+    .wrapper {
+      flex-direction: column;
+      gap: 1em;
+    }
+    .loginGroup {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 }

@@ -6,26 +6,26 @@ import DotaHeroes from "@/resources/heroes.json";
 import SortStats from "./SortStats";
 
 import Style from "./Stats.module.css";
+import { SeasonsHistory, getWinRate } from "@/lib/common";
+import { HeroStats_t } from "@/lib/types";
+import { cache } from "react";
 
 export const metadata = {
   title: "Stats",
   description: "Heroes Stats",
 };
 
-type HeroStats_t = {
-  id: number;
-  dire: { wins: number; loses: number };
-  radiant: { wins: number; loses: number };
-};
+export async function generateStaticParams() {
+  return SeasonsHistory;
+}
 
-export const revalidate = 3600;
-
-async function getData() {
-  const matches = [];
-
-  let offset = 0;
-  while (true) {
-    const currentMatches = await fetch(
+async function getMatches(
+  offset: number,
+  minDate: Date,
+  maxDate: Date,
+): Promise<any[]> {
+  try {
+    const response = await fetch(
       `https://open.faceit.com/data/v4/hubs/f21f2c66-d0c6-4d58-8146-3681ba8bd94a/matches?type=past&offset=${
         offset * 50
       }&limit=50`,
@@ -34,19 +34,56 @@ async function getData() {
           Accept: "application/json",
           Authorization: `Bearer ${env.FACEIT_TOKEN}`,
         },
-        next: { revalidate: 3600 },
+        next: { revalidate: 1800 },
       },
-    ).then((res) => res.json());
+    );
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
 
-    if (currentMatches.items.length === 0) break;
+    const currentMatches = await response.json();
 
-    matches.push(...currentMatches.items);
-    offset++;
+    if (!currentMatches.items || currentMatches.items.length === 0) {
+      return [];
+    }
+
+    const nextOffset = offset + 1;
+
+    const remainingMatches = await getMatches(nextOffset, minDate, maxDate);
+
+    const matches = currentMatches.items.filter((match: any) => {
+      const matchDate = new Date(match.finished_at * 1000);
+      return (
+        match.status === "FINISHED" &&
+        matchDate > minDate &&
+        matchDate < maxDate
+      );
+    });
+
+    return [...matches, ...remainingMatches];
+  } catch (error) {
+    console.error(`Error fetching matches: ${error}`);
+    return [];
   }
+}
 
-  const ids = matches
-    .filter((match) => match.status === "FINISHED")
-    .map((match) => ({ match_id: match.match_id }));
+async function getData(season: string) {
+  const current_season = await fetch(
+    `https://open.faceit.com/data/v4/leaderboards/hubs/f21f2c66-d0c6-4d58-8146-3681ba8bd94a/seasons/${season}?offset=0&limit=1`,
+    {
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${env.FACEIT_TOKEN}`,
+      },
+      cache: "force-cache",
+    },
+  ).then((res) => res.json());
+
+  const minDate = new Date(current_season.leaderboard.start_date * 1000);
+  const maxDate = new Date(current_season.leaderboard.end_date * 1000);
+  const matches = await getMatches(0, minDate, maxDate);
+
+  const ids = matches.map((match) => ({ match_id: match.match_id }));
 
   const matchDataArray = await Promise.allSettled(
     ids.map((matchId) => {
@@ -57,27 +94,34 @@ async function getData() {
             Accept: "application/json",
             Authorization: `Bearer ${env.FACEIT_TOKEN}`,
           },
-          next: { revalidate: 3600 },
+          cache: "force-cache",
         },
       ).then((res) => res.json());
     }),
   );
 
-  return matchDataArray
-    .filter((m) => m.status === "fulfilled" && !m.value.errors)
-    .map((m: any) => m.value.rounds[0].teams);
+  return {
+    total: matchDataArray.length,
+    matches: matchDataArray
+      .filter((m) => m.status === "fulfilled" && !m.value.errors)
+      .map((m: any) => m.value.rounds[0].teams),
+  };
 }
 
 export default async function StatsPage({
+  params,
   searchParams,
 }: {
+  params: {
+    season: string;
+  };
   searchParams: {
     sort: string;
     order: string;
     type: string;
   };
 }) {
-  const matches = await getData();
+  const { total, matches } = await getData(params.season);
 
   let heroes: HeroStats_t[] = [];
 
@@ -134,11 +178,6 @@ export default async function StatsPage({
   }
 
   heroes = heroes.filter((h) => h.dire && h.radiant);
-
-  function getWinRate(wins: number, loses: number) {
-    if (wins + loses === 0) return "0";
-    return ((wins / (wins + loses)) * 100).toFixed(1);
-  }
 
   if (
     (!searchParams.sort && !searchParams.type) ||
@@ -302,7 +341,8 @@ export default async function StatsPage({
           })}
         </tbody>
       </table>
-      <div className={Style.info}>Total games played {matches.length}</div>
+      <div className={Style.info}>Total games played {total}</div>
+      <div className={Style.info}>Score recorded in {matches.length} games</div>
     </main>
   );
 }

@@ -1,3 +1,5 @@
+import { NavItem_t } from "./types";
+
 export const getPlaceholderImage = (signature: string) =>
   `https://i0.wp.com/cdn.auth0.com/avatars/${signature}.png?ssl=1`;
 
@@ -39,3 +41,22 @@ export const playerSortLables = [
   "TD",
   "HH",
 ];
+export const NavOptions = [
+  // { value: "seasons", label: "Seasons" }, // Uses default Link component
+  { value: "stats", label: "Stats" },
+  { value: "matches", label: "Matches" },
+  { value: "players", label: "Leaderboard" },
+];
+
+export function isNavItem(value: string | undefined): boolean {
+  if (!value) return false;
+
+  return NavOptions.map((i) => i.value).includes(value);
+}
+
+export function getWinRate(wins: number, loses: number) {
+  if (wins + loses === 0) return "0";
+  return ((wins / (wins + loses)) * 100).toFixed(1);
+}
+
+export const SeasonsHistory = [{ season: "1" }];
