@@ -1,5 +1,3 @@
-import { NavItem_t } from "./types";
-
 export const getPlaceholderImage = (signature: string) =>
   `https://i0.wp.com/cdn.auth0.com/avatars/${signature}.png?ssl=1`;
 
@@ -27,6 +25,15 @@ export const passTimeString = (date: Date) => {
   }
 };
 
+export const itemLabels = [
+  "Item 1",
+  "Item 2",
+  "Item 3",
+  "Item 4",
+  "Item 5",
+  "Item 6",
+] as const;
+
 export const playerSortLables = [
   "Score",
   "Streak",
@@ -43,8 +50,8 @@ export const playerSortLables = [
 ];
 export const NavOptions = [
   // { value: "seasons", label: "Seasons" }, // Uses default Link component
+  // { value: "matches", label: "Matches" }, // Uses default Link component
   { value: "stats", label: "Stats" },
-  { value: "matches", label: "Matches" },
   { value: "players", label: "Leaderboard" },
 ];
 

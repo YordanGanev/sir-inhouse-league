@@ -20,6 +20,9 @@ export default function HeadBar({ user }: { user?: any }) {
           <li>
             <Link href="/seasons">Seasons</Link>
           </li>
+          <li>
+            <Link href="/matches">Matches</Link>
+          </li>
           {NavOptions.map((li: any) => {
             return (
               <li key={li.value}>

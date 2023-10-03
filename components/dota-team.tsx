@@ -5,17 +5,10 @@ import Image from "next/image";
 
 import Style from "./styles/DotaTeam.module.css";
 import { Player_t } from "@/lib/types";
+import Link from "next/link";
+import { itemLabels } from "@/lib/common";
 
 export default function DotaTeam({ team }: { team: any }) {
-  const itemLabels = [
-    "Item 1",
-    "Item 2",
-    "Item 3",
-    "Item 4",
-    "Item 5",
-    "Item 6",
-  ] as const;
-
   return (
     <div>
       <div className={Style.team}>
@@ -32,7 +25,6 @@ export default function DotaTeam({ team }: { team: any }) {
               <th>K</th>
               <th>D</th>
               <th>A</th>
-              <th>Gold</th>
               <th>GPM</th>
               <th>XPM</th>
               <th>CS</th>
@@ -63,12 +55,18 @@ export default function DotaTeam({ team }: { team: any }) {
                       <span>{player.player_stats.Level}</span>
                     </div>
                   </td>
-                  <td>{player.nickname}</td>
+                  <td>
+                    <Link
+                      className="hover:opacity-70"
+                      href={`/players/${player.player_id}`}
+                    >
+                      {player.nickname}
+                    </Link>
+                  </td>
 
                   <td>{player.player_stats.Kills}</td>
                   <td>{player.player_stats.Deaths}</td>
                   <td>{player.player_stats.Assists}</td>
-                  <td>{player.player_stats["Total Gold"]}</td>
                   <td>{player.player_stats["Gold/minute"]}</td>
                   <td>{player.player_stats["XP/minute"]}</td>
                   <td>{player.player_stats["Last Hits"]}</td>

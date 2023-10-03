@@ -5,6 +5,7 @@ import React from "react";
 import Style from "./Players.module.css";
 import SortTypes from "./SortTypes";
 import { env } from "process";
+import Link from "next/link";
 
 export const metadata = {
   title: "Players",
@@ -86,7 +87,9 @@ async function getPlayers(season: string) {
           Authorization: `Bearer ${env.FACEIT_TOKEN}`,
         },
         next: {
-          revalidate: 1800,
+          revalidate: SeasonsHistory.some((s) => s.season === season)
+            ? false
+            : 1800,
         },
       },
     ).then((res) => res.json());
@@ -255,7 +258,11 @@ export default async function PlayersPage({
                     width={36}
                     height={36}
                   />
-                  <div>{player.nickname}</div>
+                  <div>
+                    <Link href={`/players/${player.player_id}`}>
+                      {player.nickname}
+                    </Link>
+                  </div>
                 </td>
                 <td datatype="points">{player.points}</td>
                 <td datatype="streak">{player.current_streak}</td>

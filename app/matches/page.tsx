@@ -7,8 +7,6 @@ import Team from "@/components/team";
 import { env } from "process";
 import MatchesNav from "./matches-nav";
 
-export const revalidate = 3600;
-
 export const metadata = {
   title: "Matches",
   description: "Matches history",
